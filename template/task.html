@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Task | {% endblock title %}
+{% block taskactive %}active{% endblock taskactive %}
+
+{% block body %}
+<div class="container">
+
+{% if data %}
+<h1 class="text-center mt-5 mb-5">TODO - Task List</h1>
+<a href="/" class="btn btn-primary">Add Task</a>
+<table class="table table-hover">
+<thead>
+
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Task</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for data in data%}
+    <tr>
+      <th scope="row">{{data.id}}</th>
+      <td>{{data.title}}</td>
+      <td>{{data.task}}</td>
+      <td><a href="/update/{{data.id}}" class="btn btn-secondary">Update</a>
+      <a href="/deletetask/{{data.id}}" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+  {% endfor %}
+</table>
+{% else %}
+<h1 class="text-center my-5">No Task to Display</h1>
+<a href="/" class="btn btn-primary">Add Task</a>
+{% endif %}
+</div>
+{% endblock body %}

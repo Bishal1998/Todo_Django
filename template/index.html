@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Home | {% endblock title %}
+{% block homeactive %}active{% endblock homeactive %}
+
+{% block body %}
+  {% comment %} {% if success %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Congratulations! Your Task has been added.</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+{% endif %} {% endcomment %}
+<div class="container">
+<h1 class="text-center mt-5">Add Your Task</h1>
+</div>
+<div class="container my-10">
+    <form action="/" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+    </div>
+    {% endblock body %}
